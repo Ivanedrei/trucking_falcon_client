@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "../ApplicationViews"
-import "./Trucking.css"
+import { Route } from "react-router-dom"
+// import "./Trucking.css"
 
 export const Trucking = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("Trucking_customer") !== null)
@@ -18,11 +19,13 @@ export const Trucking = () => {
 
     return (
         <>
-            <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated} />
-            <ApplicationViews
-                setAuthUser={setAuthUser}
-                isAuthenticated={isAuthenticated}
-                setIsAuthenticated={setIsAuthenticated} />
+            <Route>
+                <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated} />
+                <ApplicationViews
+                    setAuthUser={setAuthUser}
+                    isAuthenticated={isAuthenticated}
+                    setIsAuthenticated={setIsAuthenticated} />
+            </Route>
         </>
     )
 }
