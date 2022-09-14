@@ -1,30 +1,38 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
-// import ( BrowserRouter )
 // import "./NavBar.css"
 
-export const NavBar = (clearUser, isAuthenticated) => {
+export const NavBar = () => {
     const history = useHistory()
-
-    const handleLogout = () => {
-        clearUser();
-        history('/');
-    }
     return (
         <ul className="navbar">
-
-            <li>
-                <p>
-                    "Hello World"
-
-                </p>
+            <li className="navbar__item">
+                Navigation link
             </li>
-            <li>
-
+            <li className="navbar__item">
+                Navigation link
             </li>
-        </ul >
+            <li className="navbar__item">
+                Navigation link
+            </li>
+            {
+                (localStorage.getItem("t_token") !== null) ?
+                    <li className="nav-item">
+                        <button className="nav-link fakeLink"
+                            onClick={() => {
+                                localStorage.removeItem("t_token")
+                                history.push({ pathname: "/" })
+                            }}
+                        >Logout</button>
+                    </li> :
+                    <>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/register">Register</Link>
+                        </li>
+                    </>
+            }        </ul>
     )
 }
-
-//LOGIN/REGISTER intro img:
-// https://cdn.vectorstock.com/i/1000x1000/38/13/vt-v-t-swoosh-letter-logo-design-with-modern-vector-21703813.webp

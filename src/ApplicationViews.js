@@ -18,7 +18,6 @@ export const ApplicationViews = ({ token, setToken, user, setUser }) => {
                 <Route exact path="/" > <Home /> </Route>
                 <Route path="/login" > <Login setToken={setToken} setUser={setUser} /> </Route>
                 <Route path="/register" > <Register /> </Route>
-
             </Router>
         </>
     )
