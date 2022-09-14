@@ -1,31 +1,33 @@
-import React, { useState } from "react"
+import "./Trucking.css"
+import React from "react"
+import { Route, Redirect } from "react-router-dom"
+import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
-import { ApplicationViews } from "../ApplicationViews"
-import { Route } from "react-router-dom"
-// import "./Trucking.css"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
 
-export const Trucking = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("Trucking_customer") !== null)
+export const Trucking = () => (
+    <>
+        <Route render={() => {
+            if (localStorage.getItem("t_token")) {
+                return <>
+                    <Route>
+                        <NavBar />
+                        <ApplicationViews />
+                    </Route>
+                </>
+            } else {
+                return <Redirect to="/login" />
+            }
+        }} />
 
-    const setAuthUser = (user) => {
-        sessionStorage.setItem("Trucking_customer", JSON.stringify(user))
-        setIsAuthenticated(sessionStorage.getItem("Trucking_customer") !== null)
-    }
+        <Route path="/login">
+            <Login />
+        </Route>
 
-    const clearUser = () => {
-        sessionStorage.clear();
-        setIsAuthenticated(sessionStorage.getItem("Trucking_customer") !== null)
-    }
+        <Route path="/register">
+            <Register />
+        </Route>
 
-    return (
-        <>
-            <Route>
-                <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated} />
-                <ApplicationViews
-                    setAuthUser={setAuthUser}
-                    isAuthenticated={isAuthenticated}
-                    setIsAuthenticated={setIsAuthenticated} />
-            </Route>
-        </>
-    )
-}
+    </>
+)

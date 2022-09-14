@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
-export const MyTrips = () => {
-    return (
-        <>
-            <section>
-                <h1>My Trips</h1>
+// export const MyTrips = () => {
+//     return (
+//         <>
+//             <section>
+//                 <h1>My Trips</h1>
 
-            </section>
-        </>
-    )
-}
+//             </section>
+//         </>
+//     )
+// }
