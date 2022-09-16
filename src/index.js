@@ -1,16 +1,15 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { Trucking } from './components/Trucking';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
-// ReactDOM.render(
+const customHistory = createBrowserHistory();
+
 const root = createRoot(document.getElementById("root"))
 
 root.render(
-  < React.StrictMode >
-    <Router>
-      <Trucking />
-    </Router>
-  </React.StrictMode >
+  < Router history={customHistory} >
+    <Trucking />
+  </Router >
 );

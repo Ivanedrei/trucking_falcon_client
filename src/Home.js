@@ -1,14 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getTrips, getFuel } from "./components/trip/tripManager";
+import { Link, useHistory } from "react-router-dom";
 
 export const Home = () => {
+    const [trips, setTrips] = useState([])
+    const [fuel, setFuel] = useState([])
+
+    const history = useHistory()
+
+    useEffect(() => {
+        getTrips().then(data => setTrips(data))
+    }, [])
+
+    useEffect(() => {
+        getFuel().then(data => setFuel(data))
+    }, [])
+
     return (
         <>
             <section>
                 <h1>Current Trip</h1>
                 <fieldset className="current_trip">
-                    <p>
-                        {/* {delivery.map(d = )} */}
-                    </p>
+                    {
+                        trips.map(trip => {
+                            return <section key={`trip--${trip.id}`} className="trip">
+                                <div className="trip__from">From: {trip.from_address}</div>
+                                <div className="trip__destination">To: {trip.destination}</div>
+                                <div className="trip__date">Start Date: {trip.start_date}</div>
+                                <div className="trip__miles">Current miles: {trip.total_miles} mi.</div>
+                                <div className="trip__loaded">Loaded? {trip.loaded}</div>
+                                <div className="trip__plate">Plate Number: {trip.truck.plate_number}</div>
+                                <button>
+                                    <Link to={`/trips/${trip.id}/edit`} > Edit </Link>
+                                </button>
+                                <button>
+                                    <Link to={`/trips`} > Delete </Link>
+                                </button>
+                            </section>
+                        })
+                    }
                 </fieldset>
                 <div className="btn_trip">
                     <fieldset className="flex">
@@ -24,12 +54,27 @@ export const Home = () => {
                     </fieldset>
                 </div>
                 <fieldset className="current_fuel">
-                    <p>
-                        {/* {fuel.map(f = )} */}
-                    </p>
+                    {
+                        fuel.map(trip => {
+                            return <section key={`trip--${trip.id}`} className="trip">
+                                <div className="trip__from">Fuel price: ${trip.fuel_price}</div>
+                                <div className="trip__destination">Gallons: {trip.gallons_fuel}</div>
+                                <div className="trip__date">Fuel Date: {trip.fuel_date}</div>
+                                <div className="trip__miles">Total fuel cost: ${trip.total_fuel_cost}</div>
+                                <button>
+                                    <Link to={`/trips/${trip.id}/edit`} > Edit </Link>
+                                </button>
+                                <button>
+                                    <Link to={`/trips`} > Delete </Link>
+                                </button>
+                            </section>
+                        })
+                    }
                 </fieldset>
 
             </section>
         </>
     )
 }
+
+
