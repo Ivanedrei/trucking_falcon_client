@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link, Redirect, useHistory } from "react-router-dom"
 // import "./Auth.css"
 
 
@@ -26,7 +26,8 @@ export const Login = () => {
             .then(res => res.json())
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
-                    localStorage.setItem("t_token", res.token)
+                    localStorage.setItem("t_token", res.token);
+                    < Redirect to={"/"} />
                     history.push("/")
                 }
                 else {
