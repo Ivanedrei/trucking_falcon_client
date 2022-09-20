@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getTrips, getFuel } from "./components/trip/tripManager";
+import { getTrips, getFuel, deleteTrip } from "./components/trip/tripManager";
 import { Link, useHistory } from "react-router-dom";
 
 export const Home = () => {
     const [trips, setTrips] = useState([])
+    // const [newTrip, setNewTrip] = useState([])
     const [fuel, setFuel] = useState([])
 
     const history = useHistory()
@@ -16,13 +17,29 @@ export const Home = () => {
         getFuel().then(data => setFuel(data))
     }, [])
 
+    const currentTrip = () =>
+        trips.map(trip => {
+            if (trip.finish_date == null) { return trip.id }
+        })
+
     return (
         <>
             <section>
                 <h1>Current Trip</h1>
-                <fieldset className="current_trip">
-                    {
-                        trips.map(trip => {
+                <fieldset className="current_trip">{
+                    trips.map(trip => {
+                        return <section key={`trip--${trip.id}`} className="trip">
+                            <div className="trip__from">From: {trip.from_address}</div>
+                            <div className="trip__destination">To: {trip.destination}</div>
+                            <div className="trip__date">Start Date: {trip.start_date}</div>
+                            <div className="trip__miles">Current miles: {trip.total_miles} mi.</div>
+                            <div className="trip__loaded">Loaded? {trip.loaded}</div>
+                            <div className="trip__plate">Plate Number: {trip.truck.plate_number}</div>
+                        </section>
+                    })
+                }
+                    {/* {
+                        currentTrip(trip => {
                             return <section key={`trip--${trip.id}`} className="trip">
                                 <div className="trip__from">From: {trip.from_address}</div>
                                 <div className="trip__destination">To: {trip.destination}</div>
@@ -30,27 +47,18 @@ export const Home = () => {
                                 <div className="trip__miles">Current miles: {trip.total_miles} mi.</div>
                                 <div className="trip__loaded">Loaded? {trip.loaded}</div>
                                 <div className="trip__plate">Plate Number: {trip.truck.plate_number}</div>
-                                <button>
-                                    <Link to={`/trips/${trip.id}/edit`} > Edit </Link>
-                                </button>
-                                <button>
-                                    <Link to={`/trips`} > Delete </Link>
-                                </button>
                             </section>
                         })
-                    }
+                    } */}
                 </fieldset>
                 <div className="btn_trip">
                     <fieldset className="flex">
-                        <button className="btn_1" >
-                            Edit
-                        </button>
                         <button className="btn_2" >
                             Done
                         </button>
-                        <button className="btn_3" >
+                        {/* <button className="btn_3" onClick={() => deleteTrip(trips.id).then(() => history.push("/home"))}>
                             Delete
-                        </button>
+                        </button> */}
                     </fieldset>
                 </div>
                 <fieldset className="current_fuel">
@@ -61,18 +69,18 @@ export const Home = () => {
                                 <div className="trip__destination">Gallons: {trip.gallons_fuel}</div>
                                 <div className="trip__date">Fuel Date: {trip.fuel_date}</div>
                                 <div className="trip__miles">Total fuel cost: ${trip.total_fuel_cost}</div>
-                                <button>
+                                {/* <button>
                                     <Link to={`/trips/${trip.id}/edit`} > Edit </Link>
                                 </button>
                                 <button>
                                     <Link to={`/trips`} > Delete </Link>
-                                </button>
+                                </button> */}
                             </section>
                         })
                     }
                 </fieldset>
 
-            </section>
+            </section >
         </>
     )
 }
