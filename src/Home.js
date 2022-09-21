@@ -25,7 +25,7 @@ export const Home = () => {
     return (
         <>
             <section>
-                <h1>Current Trip</h1>
+                <h1>Current Trips</h1>
                 <fieldset className="current_trip">{
                     trips.map(trip => {
                         return <section key={`trip--${trip.id}`} className="trip">
@@ -53,11 +53,9 @@ export const Home = () => {
                 </fieldset>
                 <div className="btn_trip">
                     <fieldset className="flex">
-                        <button className="btn_2" >
+                        <h2>Fuel services</h2>
+                        {/* <button className="btn_2" >
                             Done
-                        </button>
-                        {/* <button className="btn_3" onClick={() => deleteTrip(trips.id).then(() => history.push("/home"))}>
-                            Delete
                         </button> */}
                     </fieldset>
                 </div>
