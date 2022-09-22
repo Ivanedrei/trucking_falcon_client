@@ -9,9 +9,22 @@ import { ApplicationViews } from "../ApplicationViews"
 export const Trucking = () => {
     return <>
 
-        {localStorage.getItem("t_token") ?
+        <Route render={() => {
+            if (localStorage.getItem("t_token")) {
+                return <>
+                    <Route>
+                        <NavBar />
+                        <ApplicationViews />
+                    </Route>
+                </>
+            } else {
+                return <Redirect to="/login" />
+            }
+        }} />
+
+        {/* {localStorage.getItem("t_token") ?
             <div> <NavBar /> <ApplicationViews /> </div>
-            : <Redirect to="/login" />}
+            : <Redirect to="/login" />} */}
 
 
         <Route path="/login">
