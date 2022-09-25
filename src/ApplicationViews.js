@@ -23,8 +23,8 @@ export const ApplicationViews = ({ token, setToken, user, setUser }) => {
 
                 <Route path="/form" > <TripForm /> </Route>
                 <Route exact path="/trips" component={MyTrips} />
-                <Route exact path="/trips/edit/:id(\d+)" > <TripEdit /> </Route>
-                <Route exact path="/trips/view/:id(\d+)" > <TripView /> </Route>
+                <Route exact path="/trips/edit/:tripId(\d+)" > <TripEdit /> </Route>
+                <Route exact path="/trips/view/:tripId(\d+)" > <TripView /> </Route>
                 <Route exact path="/">
                     <Home />
                 </Route>

@@ -6,14 +6,14 @@ export const TripView = () => {
     const [trip, setTrip] = useState({ truck_id: {} })
     const [fuel, setFuel] = useState([])
 
-    const { id } = useParams()
+    const { tripId } = useParams()
 
     const history = useHistory()
 
     useEffect(() => {
-        getTripById(id).then(data => setTrip(data))
+        getTripById(tripId).then(data => setTrip(data))
         getFuel().then(data => setFuel(data))
-    }, [id])
+    }, [tripId])
 
 
 
@@ -40,14 +40,14 @@ export const TripView = () => {
                         <button>
                             <Link to={`/trips/edit/${trip.id}`} > Edit </Link>
                         </button>
-                        <button onClick={() => deleteTrip(parseInt(id)).then(() => history.push("/trips"))} >Delete</button>
+                        <button onClick={() => deleteTrip(parseInt(tripId)).then(() => history.push("/trips"))} >Delete</button>
                     </fieldset>
                 </div>
                 <fieldset className="current_fuel">
                     <section>
                         {
                             fuel.map(f => {
-                                if (parseInt(id) === parseInt(f.delivery_id)) {
+                                if (parseInt(tripId) === parseInt(f.delivery_id)) {
                                     return <section key={`f--${f.id}`} className="f">
                                         <div className="f__from">Fuel price: ${f.fuel_price}</div>
                                         <div className="f__destination">Gallons: {f.gallons_fuel}</div>

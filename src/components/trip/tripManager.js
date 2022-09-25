@@ -60,15 +60,26 @@ export const deleteTrip = (tripId) => {
         .then(getTrips)
 }
 
-export const updateMyTrip = (id, trip) => {
-    console.log(id)
-    return fetch(`http://localhost:8000/delivery/${id}`, {
+// export const updateMyTrip = (tripId) => {
+//     // console.log(id)
+//     return fetch(`http://localhost:8000/delivery/${tripId}`, {
+//         method: "PUT",
+//         headers: {
+//             "Authorization": `Token ${localStorage.getItem("t_token")}`,
+//             "content-Type": "application/json"
+//         },
+//         body: JSON.stringify()
+//     })
+//         .then(response => response.json())
+// }
+
+export const updateMyTrip = (editedTrip) => {
+    return fetch(`http://localhost:8000/delivery/${editedTrip.id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("t_token")}`,
-            "content-Type": "application/json"
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify(trip)
-    })
-        .then(response => response.json())
+        body: JSON.stringify(editedTrip)
+    }).then(response => response.json())
 }
