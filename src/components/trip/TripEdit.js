@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react"
-import { useHistory, useParams } from 'react-router-dom'
-import { getTrucks } from "../truck/truckManager"
+import { useParams } from "react-router-dom";
 import { getTripById, updateMyTrip } from "./tripManager"
+import { useHistory } from "react-router-dom";
+import { getTrucks } from "../truck/truckManager"
 
 
 export const TripEdit = () => {
-    const history = useHistory()
-    const [trucks, setTrucks] = useState([])
 
-    const { id } = useParams()
+    const [trucks, setTrucks] = useState([])
+    const [checked, setChecked] = useState({})
+    const [isLoading, setIsLoading] = useState(false);
+    const { tripId } = useParams();
+    const history = useHistory();
+
+    const handleChange = () => {
+        setChecked(!checked);
+    };
 
     const [trip, setTrip] = useState({
         employee: 1,
@@ -17,63 +24,48 @@ export const TripEdit = () => {
         start_date: "2022-09-22",
         total_miles: 1,
         truck: 1,
-        // loaded: checked,
+        loaded: checked,
         finish_date: "2022-09-23"
-    })
+    });
+
+    const handleFieldChange = evt => {
+        const stateToChange = { ...trip };
+        stateToChange[evt.target.id] = evt.target.value;
+        setTrip(stateToChange);
+    };
 
     const updateExistingTrip = evt => {
-        // Prevent form from being submitted
         evt.preventDefault()
+        setIsLoading(true);
 
-        const updateTrip = {
+        // This is an edit, so we need the id
+        const editedTrip = {
             id: trip.id,
             from_address: trip.from_address,
             destination: trip.destination,
-            start_date: parseInt(trip.start_date),
-            total_miles: parseInt(trip.total_miles),
-            truck: parseInt(trip.truck),
-            loaded: parseInt(trip.loaded),
-            finish_date: parseInt(trip.finish_date)
-        }
-        updateMyTrip(updateTrip)
-            .then(() => history.push("/trips"))
-        console.log(updateTrip)
+            start_date: trip.start_date,
+            total_miles: trip.total_miles,
+            truck: trip.truck,
+            loaded: trip.loaded,
+            finish_date: trip.finish_date
+        };
+
+        updateMyTrip(editedTrip)
+            .then(() => history("/trips")
+            )
+        console.log(editedTrip)
     }
 
     useEffect(() => {
-        getTrucks().then(setTrucks)
-        if (id) {
-            getTripById(parseInt(id))
-                .then(editTrip => {
-                    setTrip({
-                        id: editTrip.id,
-                        from_address: editTrip.from_address,
-                        destination: editTrip.destination,
-                        start_date: editTrip.start_date,
-                        total_miles: editTrip.total_miles,
-                        truck: editTrip.truck,
-                        loaded: editTrip.loaded,
-                        finish_date: editTrip.finish_date
-                    })
-                })
+        if (tripId) {
+            getTrucks().then(setTrucks);
+            getTripById(tripId)
+                .then(trip => {
+                    setTrip(trip);
+                    setIsLoading(false);
+                });
         }
-    }, [id])
-
-    const changeTripState = (domEvent) => {
-        const newTrip = { ...trip }
-        let selectedVal = domEvent.target.value
-        if (domEvent.target.id.includes("Id")) {
-            selectedVal = parseInt(selectedVal)
-        }
-        newTrip[domEvent.target.name] = selectedVal
-        setTrip(newTrip)
-    }
-
-    const handleChange = () => {
-        setChecked(!checked);
-    };
-
-    const [checked, setChecked] = useState({})
+    }, [tripId]);
 
 
     return (
@@ -82,36 +74,36 @@ export const TripEdit = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="startAddress">Start Address:</label>
-                    <input type="text" id="startAddress" onChange={changeTripState} required autoFocus
-                        className="form-control" placeholder={trip.from_address} value={trip.title} />
+                    <input type="text" id="startAddress" onChange={handleFieldChange} required autoFocus
+                        className="form-control" placeholder={trip.from_address} value={trip.from_address} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="destination">Destination:</label>
-                    <input type="text" id="destination" onChange={changeTripState} required autoFocus
-                        className="form-control" placeholder={trip.destination} value={trip.maker} />
+                    <input type="text" id="destination" onChange={handleFieldChange} required autoFocus
+                        className="form-control" placeholder={trip.destination} value={trip.destination} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="startDate">Start Date:</label>
-                    <input type="text" id="startDate" onChange={changeTripState} required autoFocus
-                        className="form-control" placeholder={trip.start_date} value={trip.numberOfPlayers} />
+                    <input type="text" id="startDate" onChange={handleFieldChange} required autoFocus
+                        className="form-control" placeholder={trip.start_date} value={trip.start_date} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="totalMiles">Total Miles:</label>
-                    <input type="number" id="totalMiles" onChange={changeTripState} required autoFocus
-                        className="form-control" placeholder={trip.total_miles} value={trip.skillLevel} />
+                    <input type="number" id="totalMiles" onChange={handleFieldChange} required autoFocus
+                        className="form-control" placeholder={trip.total_miles} value={trip.total_miles} />
                 </div>
             </fieldset>
             <div className="form-group">
                 <label htmlFor="truck">Plate Number: </label>
                 <select name="truck" className="form-control" id="id"
                     value={trip.truck}
-                    onChange={changeTripState}>
+                    onChange={handleFieldChange}>
                     <option value={trip.truck.plate_number}> select one </option>
                     {trucks.map(truck => (
                         <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
@@ -125,12 +117,13 @@ export const TripEdit = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="finishDate">Finish Date:</label>
-                    <input type="text" id="finishDate" onChange={changeTripState} required autoFocus
-                        className="form-control" placeholder={trip.finish_date} value={trip.tripTypeId} />
+                    <input type="text" id="finishDate" onChange={handleFieldChange} required autoFocus
+                        className="form-control" placeholder={trip.finish_date} value={trip.finish_date} />
                 </div>
             </fieldset>
 
-            < button type="submit" onClick={updateExistingTrip}
+            <button type="submit" disabled={isLoading}
+                onClick={updateExistingTrip}
                 // onClick={evt => {
                 //     // Prevent form from being submitted
                 //     evt.preventDefault()
@@ -153,7 +146,97 @@ export const TripEdit = () => {
                 //     console.log(updateTrip)
                 // }
                 // } 
-                className="btn btn-primary" > Save </button >
+                className="btn btn-primary" > Save </button>
         </form >
     )
 }
+
+
+// import React, { useState, useEffect } from "react"
+// import { useHistory, useParams } from 'react-router-dom'
+// import { getTrucks } from "../truck/truckManager"
+// import { getTripById, updateMyTrip } from "./tripManager"
+
+
+// export const TripEdit = () => {
+//     const history = useHistory()
+//     const [trucks, setTrucks] = useState([])
+//     const [isLoading, setIsLoading] = useState(false);
+
+
+//     const { tripId } = useParams()
+
+//     const [trip, setTrip] = useState({
+//         employee: 1,
+//         from_address: "",
+//         destination: "",
+//         start_date: "2022-09-22",
+//         total_miles: 1,
+//         truck: 1,
+//         // loaded: checked,
+//         finish_date: "2022-09-23"
+//     })
+
+//     const updateExistingTrip = evt => {
+//         // Prevent form from being submitted
+//         evt.preventDefault()
+//         setIsLoading(true);
+
+
+//         const updateTrip = {
+//             id: tripId,
+//             from_address: trip.from_address,
+//             destination: trip.destination,
+//             start_date: parseInt(trip.start_date),
+//             total_miles: parseInt(trip.total_miles),
+//             truck: parseInt(trip.truck),
+//             loaded: parseInt(trip.loaded),
+//             finish_date: parseInt(trip.finish_date)
+//         }
+//         updateMyTrip(updateTrip)
+//             .then(() => history.push("/trips"))
+//         console.log(updateTrip)
+//     }
+
+//     useEffect(() => {
+//         getTrucks().then(setTrucks)
+//         if (tripId) {
+//             getTripById(tripId)
+//                 .then(editTrip => {
+//                     setTrip({
+//                         id: editTrip.id,
+//                         from_address: editTrip.from_address,
+//                         destination: editTrip.destination,
+//                         start_date: editTrip.start_date,
+//                         total_miles: editTrip.total_miles,
+//                         truck: editTrip.truck,
+//                         loaded: editTrip.loaded,
+//                         finish_date: editTrip.finish_date
+//                     });
+//                     setIsLoading(false);
+//                 })
+//         }
+//     }, [])
+
+//     const changeTripState = (domEvent) => {
+//         const newTrip = { ...trip }
+//         let selectedVal = domEvent.target.value
+//         if (domEvent.target.id.includes("Id")) {
+//             selectedVal = parseInt(selectedVal)
+//         }
+//         newTrip[domEvent.target.name] = selectedVal
+//         setTrip(newTrip)
+//     }
+
+//     // test from animalEditForm: Kennels
+//     // const handleFieldChange = evt => {
+//     //     const stateToChange = { ...animal };
+//     //     stateToChange[evt.target.id] = evt.target.value;
+//     //     setAnimal(stateToChange);
+//     // };
+
+    // const handleChange = () => {
+    //     setChecked(!checked);
+    // };
+
+    // const [checked, setChecked] = useState({})
