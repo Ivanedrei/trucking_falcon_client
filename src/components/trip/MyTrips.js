@@ -28,7 +28,7 @@ export const MyTrips = () => {
                                 <div className="trip__destination">To: {trip.destination}</div>
                                 <div className="trip__date">Start Date: {trip.start_date}</div>
                                 <div className="trip__miles">Current miles: {trip.total_miles} mi.</div>
-                                <div className="trip__loaded">Loaded? {trip.loaded}</div>
+                                <div className="trip__loaded">Loaded: {trip.loaded ? "yes" : "no"}</div>
                                 <div className="trip__plate">Plate Number: {trip.truck.plate_number}</div>
                                 <div className="btn_trip">
                                     <button className="btn_1">
