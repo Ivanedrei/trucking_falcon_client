@@ -8,7 +8,7 @@ import { getTrucks } from "../truck/truckManager"
 export const TripEdit = () => {
 
     const [trucks, setTrucks] = useState([])
-    const [checked, setChecked] = useState({})
+    const [checked, setChecked] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const { tripId } = useParams();
     const history = useHistory();
@@ -23,8 +23,7 @@ export const TripEdit = () => {
         destination: "",
         start_date: "2022-09-22",
         total_miles: 1,
-        truck: 1,
-        loaded: checked,
+        truck: "",
         finish_date: "2022-09-23"
     });
 
@@ -34,26 +33,30 @@ export const TripEdit = () => {
         setTrip(stateToChange);
     };
 
+    useEffect(() => {
+        console.log(trip)
+    }, [trip])
+
     const updateExistingTrip = evt => {
         evt.preventDefault()
         setIsLoading(true);
 
         // This is an edit, so we need the id
         const editedTrip = {
-            id: trip.id,
+            id: tripId,
             from_address: trip.from_address,
             destination: trip.destination,
             start_date: trip.start_date,
             total_miles: trip.total_miles,
             truck: trip.truck,
-            loaded: trip.loaded,
+            loaded: checked,
             finish_date: trip.finish_date
         };
 
         updateMyTrip(editedTrip)
-            .then(() => history("/trips")
+            .then(() => history.push("/trips")
             )
-        console.log(editedTrip)
+        // console.log(editedTrip)
     }
 
     useEffect(() => {
@@ -61,7 +64,8 @@ export const TripEdit = () => {
             getTrucks().then(setTrucks);
             getTripById(tripId)
                 .then(trip => {
-                    setTrip(trip);
+                    setTrip({ ...trip, truck: trip.truck.id }); // first get all my info from server, then over wright to get truck (id).
+                    setChecked(trip.loaded)
                     setIsLoading(false);
                 });
         }
@@ -73,8 +77,8 @@ export const TripEdit = () => {
             <h2 className="tripForm__title">Update Trip</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="startAddress">Start Address:</label>
-                    <input type="text" id="startAddress" onChange={handleFieldChange} required autoFocus
+                    <label htmlFor="from_address">Start Address:</label>
+                    <input type="text" id="from_address" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.from_address} value={trip.from_address} />
                 </div>
             </fieldset>
@@ -88,36 +92,36 @@ export const TripEdit = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="startDate">Start Date:</label>
-                    <input type="text" id="startDate" onChange={handleFieldChange} required autoFocus
+                    <input type="text" id="start_date" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.start_date} value={trip.start_date} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="totalMiles">Total Miles:</label>
-                    <input type="number" id="totalMiles" onChange={handleFieldChange} required autoFocus
+                    <input type="number" id="total_miles" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.total_miles} value={trip.total_miles} />
                 </div>
             </fieldset>
             <div className="form-group">
                 <label htmlFor="truck">Plate Number: </label>
-                <select name="truck" className="form-control" id="id"
-                    value={trip.truck}
+                <select name="truck" className="form-control" id="truck"
+                    value={trip.truck} //your getting the id from the useEffect on line 64
                     onChange={handleFieldChange}>
-                    <option value={trip.truck.plate_number}> select one </option>
+                    <option value=""> select one </option>
                     {trucks.map(truck => (
                         <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
                     ))} </select>
             </div>
             <fieldset>
                 <label> Loaded Truck?</label>
-                <input type="checkbox" checked={checked} onChange={handleChange} id="id"></input>
+                <input type="checkbox" checked={checked} onChange={handleChange} id="checked"></input>
 
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="finishDate">Finish Date:</label>
-                    <input type="text" id="finishDate" onChange={handleFieldChange} required autoFocus
+                    <input type="text" id="finish_date" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.finish_date} value={trip.finish_date} />
                 </div>
             </fieldset>

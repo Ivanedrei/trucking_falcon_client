@@ -81,5 +81,5 @@ export const updateMyTrip = (editedTrip) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(editedTrip)
-    }).then(response => response.json())
+    })
 }
