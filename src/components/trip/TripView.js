@@ -45,7 +45,7 @@ export const TripView = () => {
                 </div>
                 <fieldset className="current_fuel">
                     <section>
-                        {
+                        { //iterating -> looping
                             fuel.map(f => {
                                 if (parseInt(tripId) === parseInt(f.delivery_id)) {
                                     return <section key={`f--${f.id}`} className="f">

@@ -1,20 +1,20 @@
 import React from "react"
 import { Link, Redirect, useHistory } from "react-router-dom"
-// import "./NavBar.css"
+import "./Navbar.css"
 
 export const NavBar = () => {
     const history = useHistory()
     return (
-        <ul className="navbar">
-            <li className="navbar__item">
+        <div className="navbar">
+            <div className="navbar__item">
                 <Link className="navbar__link" to="/home">Home</Link>
-            </li>
-            <li className="navbar__item">
+            </div>
+            <div className="navbar__item">
                 <Link className="navbar__link" to="/form">+ New Trip</Link>
-            </li>
-            <li className="navbar__item">
+            </div>
+            <div className="navbar__item">
                 <Link className="navbar__link" to="/trips">My Trips</Link>
-            </li>
+            </div>
             <div>
                 < button className="nav-link fakeLink"
                     onClick={() => {
@@ -24,7 +24,7 @@ export const NavBar = () => {
                     }}
                 >Logout</button>
             </div>
-        </ul >
+        </div >
     )
 }
 

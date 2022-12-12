@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getTrips, getFuel, deleteTrip } from "./components/trip/tripManager";
 import { Link, useHistory } from "react-router-dom";
+import "./Home.css"
 
 export const Home = () => {
     const [trips, setTrips] = useState([])
@@ -24,8 +25,8 @@ export const Home = () => {
 
     return (
         <>
-            <section>
-                <h1>Current Trips</h1>
+            <section id="main">
+                <h1 className="title">Current Trips</h1>
                 <fieldset className="current_trip">{
                     trips.map(trip => {
                         return <section key={`trip--${trip.id}`} className="trip">
@@ -35,7 +36,9 @@ export const Home = () => {
                             <div className="trip__miles">Current miles: {trip.total_miles} mi.</div>
                             <div className="trip__loaded">Loaded? {trip.loaded}</div>
                             <div className="trip__plate">Plate Number: {trip.truck.plate_number}</div>
+                            <p></p>
                         </section>
+
                     })
                 }
                     {/* {
@@ -53,7 +56,7 @@ export const Home = () => {
                 </fieldset>
                 <div className="btn_trip">
                     <fieldset className="flex">
-                        <h2>Fuel services</h2>
+                        <h1 className="title">Fuel services</h1>
                         {/* <button className="btn_2" >
                             Done
                         </button> */}

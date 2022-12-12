@@ -1,0 +1,15 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(6, 169, 82, 0.917);
+    padding: 1em;
+}
+
+.navbar__item {
+    flex-direction: row;
+}
+
+.navbar__link {
+    font-size: 18px;
+    color: whitesmoke;
+}
