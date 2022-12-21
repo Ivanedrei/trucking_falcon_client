@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getTrips } from "./tripManager"
 import { Link, useHistory, useParams } from "react-router-dom";
+import "../../Home.css"
 
 export const MyTrips = () => {
     const [trips, setTrips] = useState([])
@@ -18,12 +19,12 @@ export const MyTrips = () => {
     return (
         <>
             <section>
-                <h1>My Trips</h1>
+                <h1 className="title">My Trips</h1>
                 <fieldset className="current_trip">
                     {
                         trips.map(trip => {
                             return <section key={`trip--${trip.id}`} className="trip">
-                                <div> <h1 key={trip.id}>{trip.id}</h1></div>
+                                <div> <h1 id="id" key={trip.id}> Trip #{trip.id}</h1></div>
                                 <div className="trip__from">From: {trip.from_address}</div>
                                 <div className="trip__destination">To: {trip.destination}</div>
                                 <div className="trip__date">Start Date: {trip.start_date}</div>

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getTripById, updateMyTrip } from "./tripManager"
 import { useHistory } from "react-router-dom";
 import { getTrucks } from "../truck/truckManager"
+import "../../Home.css"
 
 
 export const TripEdit = () => {
@@ -74,7 +75,7 @@ export const TripEdit = () => {
 
     return (
         <form className="tripForm">
-            <h2 className="tripForm__title">Update Trip</h2>
+            <h2 className="tripForm__title title">Update Trip</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="from_address">Start Address:</label>

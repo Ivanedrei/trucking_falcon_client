@@ -7,6 +7,31 @@
 }
 
 .current_trip {
-    border: 2px solid red;
-    padding: 2em;
+    padding: 4em;
+}
+
+#id {
+    padding-left: 6em;
+    margin: 1em;
+}
+
+.trip {
+    margin: 2em;
+}
+
+.btn_1 {
+    /* border: 2px solid black; */
+    margin: 1em;
+    padding: 8px 24px;
+    background-color: white;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+#red {
+    background-color: red;
+    color: white;
 }

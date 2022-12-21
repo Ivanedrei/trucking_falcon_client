@@ -20,7 +20,7 @@ export const TripView = () => {
     return (
         <>
             <section>
-                <h1>Current Trip</h1>
+                <h1 className="title">Current Trip: #{tripId}</h1>
                 <fieldset className="current_trip">
                     <section className="trip">
                         <div className="trip__from">From: {trip.from_address}</div>
@@ -34,13 +34,13 @@ export const TripView = () => {
                 </fieldset>
                 <div className="btn_trip">
                     <fieldset className="flex">
-                        <button>
+                        <button className="btn_1">
                             <Link to={`/trips`} > Back </Link>
                         </button>
-                        <button>
+                        <button className="btn_1">
                             <Link to={`/trips/edit/${trip.id}`} > Edit </Link>
                         </button>
-                        <button onClick={() => deleteTrip(parseInt(tripId)).then(() => history.push("/trips"))} >Delete</button>
+                        <button className="btn_1" id="red" onClick={() => deleteTrip(parseInt(tripId)).then(() => history.push("/trips"))} >Delete</button>
                     </fieldset>
                 </div>
                 <fieldset className="current_fuel">
