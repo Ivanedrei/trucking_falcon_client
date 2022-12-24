@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory } from 'react-router-dom'
 import { getTrucks } from "../truck/truckManager"
 import { createTrip } from './tripManager'
+import "../../Home.css"
 
 export const TripForm = () => {
     const history = useHistory()
@@ -41,7 +42,7 @@ export const TripForm = () => {
 
     return (
         <form className="tripForm">
-            <h2 className="tripForm__title">Add New Trip</h2>
+            <h2 className="title">Add New Trip</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="start">Start Address: </label>
@@ -64,22 +65,24 @@ export const TripForm = () => {
                         onChange={changeTripState}
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="milage">Truck Milage: </label>
-                    <input type="text" name="total_miles" required autoFocus className="form-control"
-                        value={currentTrip.milage}
-                        onChange={changeTripState}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="truck">Plate Number: </label>
-                    <select name="truck" className="form-control" id="tripId"
-                        value={currentTrip.truck}
-                        onChange={changeTripState}>
-                        <option value="0"> select one </option>
-                        {trucks.map(truck => (
-                            <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
-                        ))} </select>
+                <div className="flex_row">
+                    <div className="form-group">
+                        <label htmlFor="milage">Truck Milage: </label>
+                        <input type="text" name="total_miles" required autoFocus className="form-control"
+                            value={currentTrip.milage}
+                            onChange={changeTripState}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="truck">Plate Number: </label>
+                        <select name="truck" className="form-control" id="tripId"
+                            value={currentTrip.truck}
+                            onChange={changeTripState}>
+                            <option value="0"> select one </option>
+                            {trucks.map(truck => (
+                                <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
+                            ))} </select>
+                    </div>
                 </div>
                 <fieldset>
                     <label> Loaded Truck?</label>
@@ -94,8 +97,8 @@ export const TripForm = () => {
                     />
                 </div>
 
-                <div className="form-group">
-                    <button className="btn_form" onClick={evt => {
+                <div className="flexy">
+                    <button className="btn" onClick={evt => {
                         // Prevent form from being submitted
                         evt.preventDefault()
 

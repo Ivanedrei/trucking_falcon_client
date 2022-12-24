@@ -104,21 +104,23 @@ export const TripEdit = () => {
                         className="form-control" placeholder={trip.total_miles} value={trip.total_miles} />
                 </div>
             </fieldset>
-            <div className="form-group">
-                <label htmlFor="truck">Plate Number: </label>
-                <select name="truck" className="form-control" id="truck"
-                    value={trip.truck} //your getting the id from the useEffect on line 64
-                    onChange={handleFieldChange}>
-                    <option value=""> select one </option>
-                    {trucks.map(truck => (
-                        <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
-                    ))} </select>
-            </div>
-            <fieldset>
-                <label> Loaded Truck?</label>
-                <input type="checkbox" checked={checked} onChange={handleChange} id="checked"></input>
+            <section className="flex_row">
+                <div className="form-group">
+                    <label htmlFor="truck">Plate Number: </label>
+                    <select name="truck" className="form-control" id="truck"
+                        value={trip.truck} //your getting the id from the useEffect on line 64
+                        onChange={handleFieldChange}>
+                        <option value=""> select one </option>
+                        {trucks.map(truck => (
+                            <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
+                        ))} </select>
+                </div>
+                <fieldset>
+                    <label> Loaded Truck?</label>
+                    <input type="checkbox" checked={checked} onChange={handleChange} id="checked"></input>
 
-            </fieldset>
+                </fieldset>
+            </section>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="finishDate">Finish Date:</label>
@@ -126,32 +128,33 @@ export const TripEdit = () => {
                         className="form-control" placeholder={trip.finish_date} value={trip.finish_date} />
                 </div>
             </fieldset>
+            <div className="flexy">
+                <button type="submit" disabled={isLoading}
+                    onClick={updateExistingTrip}
+                    // onClick={evt => {
+                    //     // Prevent form from being submitted
+                    //     evt.preventDefault()
 
-            <button type="submit" disabled={isLoading}
-                onClick={updateExistingTrip}
-                // onClick={evt => {
-                //     // Prevent form from being submitted
-                //     evt.preventDefault()
+                    //     const updateTrip = {
+                    //         from_address: trip.from_address,
+                    //         destination: trip.destination,
+                    //         start_date: parseInt(trip.start_date),
+                    //         total_miles: parseInt(trip.total_miles),
+                    //         truck: parseInt(trip.truck),
+                    //         loaded: parseInt(trip.loaded),
+                    //         finish_date: parseInt(trip.finish_date)
+                    //     }
 
-                //     const updateTrip = {
-                //         from_address: trip.from_address,
-                //         destination: trip.destination,
-                //         start_date: parseInt(trip.start_date),
-                //         total_miles: parseInt(trip.total_miles),
-                //         truck: parseInt(trip.truck),
-                //         loaded: parseInt(trip.loaded),
-                //         finish_date: parseInt(trip.finish_date)
-                //     }
-
-                //         // Send POST request to your API
+                    //         // Send POST request to your API
 
 
-                //         (updateMyTrip(updateTrip, id)
-                //             .then(() => history.push("/trips")))
-                //     console.log(updateTrip)
-                // }
-                // } 
-                className="btn btn-primary" > Save </button>
+                    //         (updateMyTrip(updateTrip, id)
+                    //             .then(() => history.push("/trips")))
+                    //     console.log(updateTrip)
+                    // }
+                    // } 
+                    className="btn_1 btn" > Save </button>
+            </div>
         </form >
     )
 }

@@ -35,3 +35,19 @@
     background-color: red;
     color: white;
 }
+
+.flex_row {
+    display: flex;
+    justify-content: baseline;
+    justify-content: space-between;
+}
+
+.flexy {
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: center;
+}
+
+.btn {
+    margin-top: 4em;
+}

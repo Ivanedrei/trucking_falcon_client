@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, Redirect, useHistory } from "react-router-dom"
-// import "./Auth.css"
+import "./Login.css"
 
 
 export const Login = () => {
@@ -44,14 +44,14 @@ export const Login = () => {
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Welcome to Trucking Falcon</h1>
-                    <h2>sign in</h2>
+                    <h1 className="title_main">Welcome to Trucking Falcon</h1>
+                    {/* <h2>sign in</h2> */}
                     <fieldset>
-                        <label htmlFor="inputUsername"> Username </label>
+                        <label htmlFor="inputUsername">  </label>
                         <input ref={username} type="username" id="username" className="form-control" placeholder="Username" required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="inputPassword"> Password </label>
+                        <label htmlFor="inputPassword">  </label>
                         <input ref={password} type="password" id="password" className="form-control" placeholder="Password" required />
                     </fieldset>
                     <fieldset style={{
