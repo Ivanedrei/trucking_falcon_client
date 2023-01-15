@@ -42,27 +42,33 @@ export const Login = () => {
                 <div>Username or password was not valid.</div>
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
-            <section>
+            <section className="background">
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1 className="title_main">Welcome to Trucking Falcon</h1>
-                    {/* <h2>sign in</h2> */}
-                    <fieldset>
-                        <label htmlFor="inputUsername">  </label>
-                        <input ref={username} type="username" id="username" className="form-control" placeholder="Username" required autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputPassword">  </label>
-                        <input ref={password} type="password" id="password" className="form-control" placeholder="Password" required />
-                    </fieldset>
-                    <fieldset style={{
-                        textAlign: "center"
-                    }}>
-                        <button className="btn btn-1 btn-sep icon-send" type="submit">Sign In</button>
-                    </fieldset>
+                    <div className="input_area">
+                        <fieldset className="flex">
+                            <div className="flex">
+                                <img id="falcon" src="https://www.pngitem.com/pimgs/m/136-1364593_falcon-png-download-simple-falcon-logos-transparent-png.png" alt="falcon" ></img>
+                            </div>
+                            <div className="fieldset">
+                                <label className="test" htmlFor="inputUsername">  </label>
+                                <input ref={username} type="username" id="username" className="form-control" placeholder="Username" required autoFocus />
+                            </div>
+                            <div className="fieldset">
+                                <label className="test" htmlFor="inputPassword">  </label>
+                                <input ref={password} type="password" id="password" className="form-control" placeholder="Password" required />
+                            </div>
+                            <div className="fieldset">
+                                <button className="btn" type="submit">Sign In</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <section>
+                        <button className="flex2 fieldset2">
+                            <Link className="btn2" to="/register">Create an Account</Link>
+                        </button>
+                    </section>
                 </form>
-            </section>
-            <section className="link--register">
-                <Link to="/register">Create an Account</Link>
             </section>
         </main>
     )

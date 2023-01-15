@@ -1,3 +1,57 @@
 .title_main {
     text-align: center;
+    font-size: 36px;
+    padding: 18px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: whitesmoke;
+    margin: 2em 5em;
+}
+
+.fieldset {
+    margin: auto;
+    padding: 1em;
+}
+
+.btn {
+    border: 2px solid black;
+    margin: -10em 0em 1em 0em;
+    padding: 8px 24px;
+    background-color: white;
+    text-align: "center"
+}
+
+.flex2 {
+    display: flex;
+}
+
+.btn2 {
+    border: 2px solid black;
+    padding: 8px 24px;
+    background-color: white;
+}
+
+.fieldset2 {
+    margin: auto;
+    padding: 0em;
+}
+
+.input_area {
+    /* border: 2px solid black; */
+    margin: 2em;
+}
+
+#falcon {
+    width: 14em;
+    align-self: center;
+    margin: 2em;
+}
+
+#username,
+#password {
+    font-size: 18px;
 }
