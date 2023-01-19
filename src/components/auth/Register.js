@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, } from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./Register.css"
 
@@ -62,7 +62,7 @@ export const Register = () => {
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
                 <div>
-                    <img src=""></img>
+                    <input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
                 </div>
                 <div className="flexer">
                     <div className="font">
@@ -75,24 +75,25 @@ export const Register = () => {
                     </div>
                 </div>
                 <div className="flexer2">
-                    <div className="font">
+                    <div className="font input">
                         <label htmlFor="inputUsername"> </label>
                         <input ref={username} type="text" name="username" className="form-control input" placeholder="Username" required />
                     </div>
-                    <div className="font">
+                    <div className="font input">
                         <label htmlFor="inputEmail"> </label>
                         <input ref={email} type="text" name="email" className="form-control input" placeholder="Email Address" required />
                     </div>
-                    <div className="font">
+                    {/* <div className="flexer2"> */}
+                    <div className="font driver">
                         <label> Are You a Driver? </label>
                         <input id="checkbox" type="checkbox" checked={checked} onChange={handleChange}></input>
-
                     </div>
-                    <div className="font">
+                    {/* </div> */}
+                    <div className="font input">
                         <label htmlFor="inputPassword"> </label>
                         <input ref={password} type="password" name="password" className="form-control input" placeholder="Password" required />
                     </div>
-                    <div className="font">
+                    <div className="font input">
                         <label htmlFor="verifyPassword"> </label>
                         <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control input" placeholder="Verify password" required />
                     </div>
