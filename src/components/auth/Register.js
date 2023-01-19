@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
-// import "./Auth.css"
+import "./Register.css"
 
 export const Register = () => {
     const firstName = useRef()
@@ -61,35 +61,42 @@ export const Register = () => {
 
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
-                <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputUsername">Username</label>
-                    <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputEmail">Email</label>
-                    <input ref={email} type="text" name="email" className="form-control" placeholder="email address" required />
-                </fieldset>
-                <fieldset>
-                    <label> Are You a Driver?</label>
-                    <input type="checkbox" checked={checked} onChange={handleChange}></input>
+                <div>
+                    <img src=""></img>
+                </div>
+                <div className="flexer">
+                    <div className="font">
+                        <label htmlFor="firstName"> </label>
+                        <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First Name" required autoFocus />
+                    </div>
+                    <div className="font">
+                        <label htmlFor="lastName"> </label>
+                        <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last Name" required />
+                    </div>
+                </div>
+                <div className="flexer2">
+                    <div className="font">
+                        <label htmlFor="inputUsername"> </label>
+                        <input ref={username} type="text" name="username" className="form-control input" placeholder="Username" required />
+                    </div>
+                    <div className="font">
+                        <label htmlFor="inputEmail"> </label>
+                        <input ref={email} type="text" name="email" className="form-control input" placeholder="Email Address" required />
+                    </div>
+                    <div className="font">
+                        <label> Are You a Driver? </label>
+                        <input id="checkbox" type="checkbox" checked={checked} onChange={handleChange}></input>
 
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
-                    <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
-                    <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
-                </fieldset>
+                    </div>
+                    <div className="font">
+                        <label htmlFor="inputPassword"> </label>
+                        <input ref={password} type="password" name="password" className="form-control input" placeholder="Password" required />
+                    </div>
+                    <div className="font">
+                        <label htmlFor="verifyPassword"> </label>
+                        <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control input" placeholder="Verify password" required />
+                    </div>
+                </div>
                 <fieldset style={{
                     textAlign: "center"
                 }}>

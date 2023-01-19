@@ -1,0 +1,28 @@
+.flexer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.font {
+    font-size: 22px;
+    margin: 1em 1.5em;
+}
+
+.flexer2 {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-control {
+    font-size: 20px;
+    padding: .5em;
+
+}
+
+#checkbox {
+    width: 1.5em;
+    height: 1.5em;
+}
