@@ -46,7 +46,7 @@ export const Login = () => {
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1 className="title_main">Welcome to Trucking Falcon</h1>
                     <div className="input_area">
-                        <fieldset className="flex">
+                        <fieldset className="flex_1">
                             <div className="flex">
                                 <img id="falcon" src="https://www.pngitem.com/pimgs/m/136-1364593_falcon-png-download-simple-falcon-logos-transparent-png.png" alt="falcon" ></img>
                             </div>

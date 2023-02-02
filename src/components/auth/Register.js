@@ -61,9 +61,9 @@ export const Register = () => {
 
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
-                <div>
+                {/* <div>
                     <input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
-                </div>
+                </div> */}
                 <div className="flexer">
                     <div className="font">
                         <label htmlFor="firstName"> </label>

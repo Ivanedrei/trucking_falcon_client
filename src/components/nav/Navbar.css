@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-around;
     background-color: rgba(6, 169, 82, 0.917);
-    padding: 1em;
+    padding: 2em;
+    margin: -1.2em;
 }
 
 .navbar__item {

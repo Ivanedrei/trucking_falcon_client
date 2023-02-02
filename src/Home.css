@@ -4,6 +4,7 @@
 
 .title {
     text-align: center;
+    padding: 2em;
 }
 
 .current_trip {
@@ -12,7 +13,8 @@
 
 #id {
     padding-left: 6em;
-    margin: 1em;
+    margin: 2em;
+    font-size: larger;
 }
 
 .trip {
@@ -21,9 +23,10 @@
 
 .btn_1 {
     /* border: 2px solid black; */
-    margin: 1em;
+    margin: 3em;
     padding: 8px 24px;
     background-color: white;
+    font-size: medium;
 }
 
 .flex {
@@ -50,4 +53,9 @@
 
 .btn {
     margin-top: 4em;
+}
+
+.description {
+    font-size: large;
+    margin: .5em;
 }

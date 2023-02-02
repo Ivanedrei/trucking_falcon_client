@@ -20,20 +20,20 @@ export const TripView = () => {
     return (
         <>
             <section>
-                <h1 className="title">Current Trip: #{tripId}</h1>
+                <h1 className="title">Trip: #{tripId}</h1>
                 <fieldset className="current_trip">
                     <section className="trip">
-                        <div className="trip__from">From: {trip.from_address}</div>
-                        <div className="trip__destination">To: {trip.destination}</div>
-                        <div className="trip__date">Start Date: {trip.start_date}</div>
-                        <div className="trip__miles">Current miles: {trip.total_miles} mi.</div>
-                        <div className="trip__loaded">Loaded? {trip.loaded}</div>
-                        <div className="trip__plate">Plate Number: {trip.truck_id?.plate_number}</div>
-                        <div className="trip__date">Finish Date: {trip.finish_date}</div>
+                        <div className="description trip__from">From: {trip.from_address}</div>
+                        <div className="description trip__destination">To: {trip.destination}</div>
+                        <div className="description trip__date">Start Date: {trip.start_date}</div>
+                        <div className="description trip__miles">Current miles: {trip.total_miles} mi.</div>
+                        <div className="description trip__loaded">Loaded? {trip.loaded}</div>
+                        <div className="description trip__plate">Plate Number: {trip.truck_id?.plate_number}</div>
+                        <div className="description trip__date">Finish Date: {trip.finish_date}</div>
                     </section>
                 </fieldset>
                 <div className="btn_trip">
-                    <fieldset className="flex">
+                    <div className="flex">
                         <button className="btn_1">
                             <Link to={`/trips`} > Back </Link>
                         </button>
@@ -41,9 +41,9 @@ export const TripView = () => {
                             <Link to={`/trips/edit/${trip.id}`} > Edit </Link>
                         </button>
                         <button className="btn_1" id="red" onClick={() => deleteTrip(parseInt(tripId)).then(() => history.push("/trips"))} >Delete</button>
-                    </fieldset>
+                    </div>
                 </div>
-                <fieldset className="current_fuel">
+                {/* <fieldset className="current_fuel">
                     <section>
                         { //iterating -> looping
                             fuel.map(f => {
@@ -61,7 +61,7 @@ export const TripView = () => {
                             })
                         }
                     </section>
-                </fieldset>
+                </fieldset> */}
             </section>
         </>
     )

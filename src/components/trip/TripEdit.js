@@ -76,58 +76,52 @@ export const TripEdit = () => {
     return (
         <form className="tripForm">
             <h2 className="tripForm__title title">Update Trip</h2>
-            <fieldset>
+            <div>
                 <div className="form-group">
-                    <label htmlFor="from_address">Start Address:</label>
+                    <label htmlFor="from_address" className="description">Start Address:</label>
                     <input type="text" id="from_address" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.from_address} value={trip.from_address} />
                 </div>
-            </fieldset>
-            <fieldset>
                 <div className="form-group">
-                    <label htmlFor="destination">Destination:</label>
+                    <label htmlFor="destination" className="description">Destination:</label>
                     <input type="text" id="destination" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.destination} value={trip.destination} />
                 </div>
-            </fieldset>
-            <fieldset>
                 <div className="form-group">
-                    <label htmlFor="startDate">Start Date:</label>
+                    <label htmlFor="startDate" className="description">Start Date:</label>
                     <input type="text" id="start_date" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.start_date} value={trip.start_date} />
                 </div>
-            </fieldset>
-            <fieldset>
                 <div className="form-group">
-                    <label htmlFor="totalMiles">Total Miles:</label>
+                    <label htmlFor="totalMiles" className="description">Total Miles:</label>
                     <input type="number" id="total_miles" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.total_miles} value={trip.total_miles} />
                 </div>
-            </fieldset>
-            <section className="flex_row">
-                <div className="form-group">
-                    <label htmlFor="truck">Plate Number: </label>
-                    <select name="truck" className="form-control" id="truck"
-                        value={trip.truck} //your getting the id from the useEffect on line 64
-                        onChange={handleFieldChange}>
-                        <option value=""> select one </option>
-                        {trucks.map(truck => (
-                            <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
-                        ))} </select>
-                </div>
-                <fieldset>
-                    <label> Loaded Truck?</label>
-                    <input type="checkbox" checked={checked} onChange={handleChange} id="checked"></input>
+                <section className="flex_row">
+                    <div className="form-group">
+                        <label htmlFor="truck" className="description">Plate Number: </label>
+                        <select name="truck" className="form-control" id="truck"
+                            value={trip.truck} //your getting the id from the useEffect on line 64
+                            onChange={handleFieldChange}>
+                            <option value=""> select one </option>
+                            {trucks.map(truck => (
+                                <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
+                            ))} </select>
+                    </div>
+                    <div>
+                        <label className="description"> Loaded Truck?</label>
+                        <input type="checkbox" checked={checked} onChange={handleChange} id="checked"></input>
 
-                </fieldset>
-            </section>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="finishDate">Finish Date:</label>
-                    <input type="text" id="finish_date" onChange={handleFieldChange} required autoFocus
-                        className="form-control" placeholder={trip.finish_date} value={trip.finish_date} />
+                    </div>
+                </section>
+                <div>
+                    <div className="form-group">
+                        <label htmlFor="finishDate" className="description">Finish Date:</label>
+                        <input type="text" id="finish_date" onChange={handleFieldChange} required autoFocus
+                            className="form-control" placeholder={trip.finish_date} value={trip.finish_date} />
+                    </div>
                 </div>
-            </fieldset>
+            </div>
             <div className="flexy">
                 <button type="submit" disabled={isLoading}
                     onClick={updateExistingTrip}
