@@ -59,3 +59,13 @@
     font-size: large;
     margin: .5em;
 }
+
+/* create and edit forms */
+
+.flex_form {
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.input_form {}

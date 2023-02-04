@@ -76,28 +76,28 @@ export const TripEdit = () => {
     return (
         <form className="tripForm">
             <h2 className="tripForm__title title">Update Trip</h2>
-            <div>
-                <div className="form-group">
+            <div className="flex_form">
+                <div className="form-group input_form">
                     <label htmlFor="from_address" className="description">Start Address:</label>
                     <input type="text" id="from_address" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.from_address} value={trip.from_address} />
                 </div>
-                <div className="form-group">
+                <div className="form-group input_form">
                     <label htmlFor="destination" className="description">Destination:</label>
                     <input type="text" id="destination" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.destination} value={trip.destination} />
                 </div>
-                <div className="form-group">
+                <div className="form-group input_form">
                     <label htmlFor="startDate" className="description">Start Date:</label>
                     <input type="text" id="start_date" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.start_date} value={trip.start_date} />
                 </div>
-                <div className="form-group">
+                <div className="form-group input_form">
                     <label htmlFor="totalMiles" className="description">Total Miles:</label>
                     <input type="number" id="total_miles" onChange={handleFieldChange} required autoFocus
                         className="form-control" placeholder={trip.total_miles} value={trip.total_miles} />
                 </div>
-                <section className="flex_row">
+                <section className="flex_row input_form">
                     <div className="form-group">
                         <label htmlFor="truck" className="description">Plate Number: </label>
                         <select name="truck" className="form-control" id="truck"
@@ -109,13 +109,13 @@ export const TripEdit = () => {
                             ))} </select>
                     </div>
                     <div>
-                        <label className="description"> Loaded Truck?</label>
+                        <label className="description input_form"> Loaded Truck?</label>
                         <input type="checkbox" checked={checked} onChange={handleChange} id="checked"></input>
 
                     </div>
                 </section>
                 <div>
-                    <div className="form-group">
+                    <div className="form-group input_form">
                         <label htmlFor="finishDate" className="description">Finish Date:</label>
                         <input type="text" id="finish_date" onChange={handleFieldChange} required autoFocus
                             className="form-control" placeholder={trip.finish_date} value={trip.finish_date} />
