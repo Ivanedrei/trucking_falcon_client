@@ -41,13 +41,12 @@
 
 .flex_row {
     display: flex;
-    justify-content: baseline;
     justify-content: space-between;
 }
 
 .flexy {
     display: flex;
-    /* border: 2px solid red; */
+    margin: -1em;
     justify-content: center;
 }
 
@@ -68,4 +67,34 @@
     flex-direction: column;
 }
 
-.input_form {}
+.input_form1 {
+    align-self: center;
+}
+
+.form-control1 {
+    width: 40em;
+    font-size: large;
+    height: .5em;
+    padding: 1em;
+}
+
+.form-group {
+    margin-bottom: 2em;
+}
+
+.dec_edit {
+    margin: 2em 1em;
+    font-size: larger;
+}
+
+.input_form2 {
+    align-self: center;
+    font-size: large;
+    margin: 1em;
+}
+
+#checked {
+    margin: 1em;
+    width: 1.5em;
+    height: 1.5em;
+}
