@@ -102,7 +102,6 @@ export const TripEdit = () => {
                     <input type="number" id="total_miles" onChange={handleFieldChange} required autoFocus
                         className="form-control1" placeholder={trip.total_miles} value={trip.total_miles} />
                 </div>
-                {/* <section className="flex_row input_form1"> */}
                 <div className="form-group input_form2">
                     <label htmlFor="truck" className="dec_edit">Plate Number: </label>
                     <select name="truck" className="form-control" id="truck"
@@ -113,12 +112,11 @@ export const TripEdit = () => {
                             <option key={truck.id} value={truck.id}> {truck.plate_number}</option>
                         ))} </select>
                 </div>
-                <div className="form-group input_form2">
+                <div className="form-group input_form2 loaded">
                     <label className="dec_edit "> Loaded Truck?</label>
                     <input type="checkbox" checked={checked} onChange={handleChange} id="checked"></input>
 
                 </div>
-                {/* </section> */}
             </div>
             <div className="flexy">
                 <button type="submit" disabled={isLoading}

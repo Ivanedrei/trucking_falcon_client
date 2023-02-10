@@ -43,38 +43,45 @@ export const TripForm = () => {
     return (
         <form className="tripForm">
             <h2 className="title">Add New Trip</h2>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="start">Start Address: </label>
-                    <input type="text" name="from_address" required autoFocus className="form-control"
+            <div className="flex_form">
+                <div className="form-group input_form1">
+                    <label htmlFor="start" id="title">Start Address: </label>
+                    <input type="text" name="from_address" required autoFocus className="form-control1"
                         value={currentTrip.start}
                         onChange={changeTripState}
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="destination">Destination: </label>
-                    <input type="text" name="destination" required autoFocus className="form-control"
+                <div className="form-group input_form1">
+                    <label htmlFor="destination" id="title">Destination: </label>
+                    <input type="text" name="destination" required autoFocus className="form-control1"
                         value={currentTrip.destination}
                         onChange={changeTripState}
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="date">Start Date: </label>
-                    <input type="text" name="start_date" required autoFocus className="form-control"
+                <div className="form-group input_form1">
+                    <label htmlFor="date" id="title">Start Date: </label>
+                    <input type="text" name="start_date" required autoFocus className="form-control1"
                         value={currentTrip.date}
                         onChange={changeTripState}
                     />
                 </div>
-                <div className="flex_row">
-                    <div className="form-group">
-                        <label htmlFor="milage">Truck Milage: </label>
-                        <input type="text" name="total_miles" required autoFocus className="form-control"
+                <div className="form-group input_form1">
+                    <label htmlFor="date" id="title"> Finish Date: </label>
+                    <input type="text" name="finish_date" required autoFocus className="form-control1"
+                        value={currentTrip.finishDate}
+                        onChange={changeTripState}
+                    />
+                </div>
+                <div className="flex_row even_out">
+                    <div className="form-group input_form1">
+                        <label htmlFor="milage" id="title">Truck Milage: </label>
+                        <input type="text" name="total_miles" required autoFocus className="form-control2"
                             value={currentTrip.milage}
                             onChange={changeTripState}
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="truck">Plate Number: </label>
+                    <div className="form-group input_form1">
+                        <label htmlFor="truck" id="title">Plate Number: </label>
                         <select name="truck" className="form-control" id="tripId"
                             value={currentTrip.truck}
                             onChange={changeTripState}>
@@ -84,17 +91,10 @@ export const TripForm = () => {
                             ))} </select>
                     </div>
                 </div>
-                <fieldset>
-                    <label> Loaded Truck?</label>
-                    <input type="checkbox" checked={checked} onChange={handleChange}></input>
+                <div className="truck">
+                    <label id="title"> Loaded Truck?</label>
+                    <input type="checkbox" checked={checked} onChange={handleChange} id='checked'></input>
 
-                </fieldset>
-                <div className="form-group">
-                    <label htmlFor="date"> Finish Date: </label>
-                    <input type="text" name="finish_date" required autoFocus className="form-control"
-                        value={currentTrip.finishDate}
-                        onChange={changeTripState}
-                    />
                 </div>
 
                 <div className="flexy">
@@ -129,7 +129,7 @@ export const TripForm = () => {
                         Submit
                     </button>
                 </div>
-            </fieldset >
+            </div >
         </form >
     )
 }

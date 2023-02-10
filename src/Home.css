@@ -98,3 +98,24 @@
     width: 1.5em;
     height: 1.5em;
 }
+
+.even_out {
+    justify-content: space-evenly;
+}
+
+.form-control2 {
+    /* width: 40em; */
+    font-size: large;
+    height: .5em;
+    padding: 1em;
+}
+
+#title {
+    font-size: 1.2em;
+    margin: 1em;
+}
+
+.truck {
+    /* border: 2px solid red; */
+    align-self: center;
+}
