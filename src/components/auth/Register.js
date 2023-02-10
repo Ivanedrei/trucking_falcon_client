@@ -93,7 +93,7 @@ export const Register = () => {
                         <label htmlFor="inputPassword"> </label>
                         <input ref={password} type="password" name="password" className="form-control input" placeholder="Password" required />
                     </div>
-                    <div className="font input">
+                    <div className="font input margin">
                         <label htmlFor="verifyPassword"> </label>
                         <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control input" placeholder="Verify password" required />
                     </div>
@@ -101,10 +101,10 @@ export const Register = () => {
                 <fieldset style={{
                     textAlign: "center"
                 }}>
-                    <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
+                    <button className="btn margin" type="submit">Register</button>
                 </fieldset>
             </form>
-            <section className="link--register">
+            <section className="link--register margin1">
                 Already registered? <Link to="/login">Login</Link>
             </section>
         </main>

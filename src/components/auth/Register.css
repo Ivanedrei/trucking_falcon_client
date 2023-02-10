@@ -35,3 +35,11 @@
     width: 25.5em;
     align-self: center;
 }
+
+.margin {
+    margin-bottom: 2em;
+}
+
+.margin1 {
+    margin-top: 2em;
+}
